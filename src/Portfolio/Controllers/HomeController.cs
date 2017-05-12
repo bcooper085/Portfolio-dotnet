@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
@@ -17,6 +17,17 @@ namespace Portfolio.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        public IActionResult Projects()
+        {
+            return View();
+        }
+
+        public IActionResult CollectProjects()
+        {
+            var result = Project.GetProjects();
+            return Json(result);
         }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Models
@@ -12,19 +13,21 @@ namespace Portfolio.Models
     public class Project
     {
 
-        public static JObject GetProjects()
+        public static JArray GetProjects()
         {
-            var client = new RestClient("https://github.com/");
-            var request = new RestRequest("bcooper085?tab=stars", Method.GET);
+            var client = new RestClient("https://api.github.com");
+            var request = new RestRequest("/users/bcooper085/repos", Method.GET);
             request.AddHeader("Accept", "application/vnd.github.v3+json");
+            request.AddHeader("User-Agent", "bcooper085");
 
             var response = new RestResponse();
+
             Task.Run(async () =>
             {
                 response = await GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
-            JObject result = JsonConvert.DeserializeObject<JObject>(response.Content);
-            Console.WriteLine(result);
+            JArray result = JsonConvert.DeserializeObject<JArray>(response.Content);
+
             return result;
         }
 

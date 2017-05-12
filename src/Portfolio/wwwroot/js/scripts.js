@@ -1,16 +1,13 @@
 ﻿$(function () {
+    $('#github-projects').html("<h4>View Projects</h4>");
     $('#github-projects').click(function () {
-        event.preventDefault();
-        console.log($(this).serialize());
         $.ajax({
-            url: 'Project/CollectProjects',
-            type: 'GET',
-            data: { cityName: "bcooper085" },
-            dataType: 'json',
+            url: 'Home/CollectProjects',
+            type: "GET",
+            datatype: 'json',
             success: function (result) {
                 $(".proj-list").html(result);
-                console.log(result);
             }
-        })
-    })
+        });
+    });
 });
