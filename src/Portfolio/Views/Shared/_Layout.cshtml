@@ -3,12 +3,24 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="container">
-        @RenderBody()
-    </div>
+    <main>
+        <nav>
+            <div class="nav-wrapper">
+                <span class="title">@Html.ActionLink("Portfolio", "Index", "Home")</span>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>@Html.ActionLink("About Me", "About", "Home")</li>
+                    <li>@Html.ActionLink("Projects", "Index", "Project")</li>                    
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
 </body>
 </html>
