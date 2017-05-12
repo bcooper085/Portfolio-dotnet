@@ -1,3 +1,19 @@
 ﻿.my-info {
     text-align: center;
 }
+
+.row {
+    margin-top: 3%;
+}
+
+.card project-list {
+    margin: 2%;
+}
+
+.black {
+    color: white;
+}
+
+.info {
+    padding: 2%;
+}
