@@ -21,13 +21,8 @@ namespace Portfolio.Controllers
 
         public IActionResult Projects()
         {
-            return View();
-        }
-
-        public IActionResult CollectProjects()
-        {
-            var result = Project.GetProjects();
-            return Json(result);
+            List<Project> Starred = Project.GetProjects();
+            return View(Starred);
         }
     }
 }

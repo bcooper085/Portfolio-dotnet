@@ -12,12 +12,13 @@ namespace Portfolio.Models
 {
     public class Project
     {
+        public string name { get; set; }
+        public int stargazers_count { get; set; }
 
-        public static JArray GetProjects()
+        public static List<Project> GetProjects()
         {
             var client = new RestClient("https://api.github.com");
-            var request = new RestRequest("/users/bcooper085/repos", Method.GET);
-            request.AddHeader("Accept", "application/vnd.github.v3+json");
+            var request = new RestRequest("/users/bcooper085/starred", Method.GET);
             request.AddHeader("User-Agent", "bcooper085");
 
             var response = new RestResponse();
@@ -27,8 +28,8 @@ namespace Portfolio.Models
                 response = await GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
             JArray result = JsonConvert.DeserializeObject<JArray>(response.Content);
-
-            return result;
+            var projectList = JsonConvert.DeserializeObject<List<Project>>(result.ToString());
+            return projectList;
         }
 
         public static Task<IRestResponse> GetResponseContentAsync(RestClient client, RestRequest request)

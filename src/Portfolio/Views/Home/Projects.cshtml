@@ -1,8 +1,15 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model IEnumerable<Portfolio.Models.Project>
 <h2>Projects</h2>
 
-<div id="github-projects">List</div>
-<div class="proj-list"></div>
+<div class="project-list">
+    @foreach (var project in Model)
+    {
+        if (project.stargazers_count > 0)
+        { 
+           <h3>@project.name</h3>   
+        }
+    }
+</div>
