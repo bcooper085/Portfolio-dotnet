@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
@@ -12,6 +12,12 @@ namespace Portfolio.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult GetProjects()
+        {
+            var result = Project.GetProjects();
+            return Json(result);
         }
     }
 }
