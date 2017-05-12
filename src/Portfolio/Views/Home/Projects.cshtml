@@ -1,4 +1,5 @@
 ﻿@{
+    ViewData["Title"] = "Projects";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model IEnumerable<Portfolio.Models.Project>
@@ -8,8 +9,11 @@
     @foreach (var project in Model)
     {
         if (project.stargazers_count > 0)
-        { 
-           <h3>@project.name</h3>   
+        {            
+            <h3>@project.name</h3>
+            <h4>@project.description</h4>
+            <p>@project.html_url</p>
+            <hr />         
         }
     }
 </div>
